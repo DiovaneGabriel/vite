@@ -20,7 +20,15 @@ update:
 
 install:
 	make build-image && \
-	docker run -it -v ./app:/app ${NODE_IMAGE} /bin/sh -c "npx create-vite ."
+	docker run -it -v ./app:/app ${NODE_IMAGE} /bin/sh -c "npx create-vite ." && \
+	sudo chmod -R 777 . && \
+	mv ./app/* . && \
+	mv ./app/.eslintrc.cjs . && \
+	mv ./app/.gitignore . && \
+	rm -rf ./app && \
+	docker run -it -v ./:/app ${NODE_IMAGE} /bin/sh -c "npm i" && \
+	docker container prune -f && \
+	docker compose up -d
 
 network:
 	docker network create vite
