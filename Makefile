@@ -18,7 +18,11 @@ build-image:
 update:
 	docker exec -it ${NODE_CONTAINER} /bin/sh -c "npm i"
 
+network:
+	docker network create vite
+
 install:
+	make network && \
 	make build-image && \
 	docker run -it -v ./app:/app ${NODE_IMAGE} /bin/sh -c "npx create-vite . && npm i" && \
 	sudo chmod -R 777 . && \
@@ -28,6 +32,3 @@ install:
 	rm -rf ./app && \
 	docker container prune -f && \
 	docker compose up -d
-
-network:
-	docker network create vite
