@@ -10,8 +10,8 @@ services:
       - "5173:5173"
     command: npm run dev
     networks:
-      vite:
+      strapi:
 
 networks:
-  vite:
+  strapi:
     external: true
