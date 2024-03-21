@@ -1,0 +1,15 @@
+{
+    "actions": {
+        "confirm": "Confirm"
+    },    
+    "http-errors": {
+        "404": "Not found"
+    },
+    "inputs": {
+        "email": "E-mail",
+        "password": "Password"
+    },
+    "messages": {
+        "user-created": "User created successfully!"
+    }
+}
